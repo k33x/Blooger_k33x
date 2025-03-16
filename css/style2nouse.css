@@ -1,0 +1,468 @@
+/* 导入字体文件 */
+@import url("../css/fonts.css");
+
+/* 全局变量扩展，增加布局和间距变量 */
+:root {
+  /* 主题颜色 */
+  --text-gray: #3f4954;
+  --text-light: #686666da;
+  --bg-color: #0f0f0f;
+  --white: #ffffff;
+  --midnight: #104f55;
+  --blue-moveup: #4a90e2;
+  --blue-deep: #326abf;
+  --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+  /* 字体 */
+  --Abel: "Abel", cursive;
+  --Anton: "Anton", cursive;
+  --Josefin: "Josefin", cursive;
+  --Lexend: "Lexend", cursive;
+  --Livvic: "Livvic", cursive;
+
+  /* 布局变量 */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --nav-height: 10vh;
+  --border-radius: 2rem;
+  --btn-padding: 1rem 3rem;
+}
+
+/* 全局重置和基础样式，减少重复 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-gray);
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* 基础类，增强复用性 */
+.text-gray {
+  color: var(--text-gray);
+}
+.text-white {
+  color: var(--white);
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex-row--space-between {
+  justify-content: space-between;
+}
+.flex-row--center {
+  justify-content: center;
+}
+.container {
+  margin: 0 5vw;
+}
+
+/* 通用文本和按钮样式，减少重复定义 */
+h1 {
+  font-family: var(--Lexend);
+  font-size: 2.5rem;
+}
+h2 {
+  font-family: var(--Lexend);
+}
+h3 {
+  font-family: var(--Abel);
+  font-size: 1.3rem;
+}
+p {
+  font-family: var(--Lexend);
+  color: var(--text-light);
+}
+span {
+  font-family: var(--Abel);
+}
+
+.btn {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--btn-padding);
+  font-size: 1rem;
+  font-family: var(--Livvic);
+  cursor: pointer;
+  background: var(--sky);
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+.btn--blog {
+  padding: 0.7rem 2rem;
+}
+.btn--post {
+  padding: 0.7rem 1.5rem;
+  border-radius: 0;
+}
+
+/* 导航栏优化，减少硬编码 */
+.nav {
+  padding: 0 2rem;
+  height: 0;
+  min-height: var(--nav-height);
+  overflow: hidden;
+  transition: height 0.6s ease-in-out;
+  background: url("../assets/Abract02.png") center/cover;
+}
+
+.nav .nav-menu {
+  justify-content: space-between;
+}
+.nav .toggle-collapse {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  cursor: pointer;
+  display: none;
+}
+.nav .toggle-collapse .toggle-icons {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--spacing-md) 0;
+}
+.nav .toggle-collapse .toggle-icons i {
+  font-size: 1.4rem;
+  color: var(--text-gray);
+}
+.nav .nav-items {
+  display: flex;
+  margin: 0;
+}
+.nav .nav-items .nav-link {
+  padding: 1.6rem 1.8rem;
+  font-size: 1.1rem;
+  font-family: var(--Abel);
+}
+.nav .nav-items .nav-link:hover {
+  background-color: var(--midnight);
+}
+.nav .nav-items .nav-link:hover a {
+  color: var(--white);
+}
+.nav .nav-brand a {
+  font-size: 1.6rem;
+  padding: var(--spacing-md) 0;
+  font-family: var(--Lexend);
+}
+.nav .social {
+  padding: var(--spacing-md) 0;
+}
+.nav .social i {
+  padding: 0 var(--spacing-sm);
+  transition: color 0.3s ease;
+}
+.nav .social i:hover {
+  color: #82c7dc;
+}
+.nav.collapse {
+  height: 22rem;
+}
+
+.google_translate-fixed {
+  position: absolute;
+  left: 10em;
+  top: 1em;
+}
+
+/* 主内容优化，复用背景变量 */
+main .site-title {
+  background: url("../assets/Background-image.png") center/cover;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+}
+main .site-title .site-background {
+  padding-top: 10rem;
+  text-align: center;
+  color: var(--white);
+}
+main .site-title .btn {
+  margin: 1.8rem;
+}
+
+main .blog {
+  background: url("../assets/Abract01.png") no-repeat right 0 / cover;
+  height: 100vh;
+  width: 100%;
+}
+main .blog .blog-post {
+  padding-top: 6rem;
+}
+main .blog-post .blog-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  margin: var(--spacing-lg) var(--spacing-md);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+main .blog-content .blog-title {
+  padding: var(--spacing-md) 0;
+}
+main .blog-content span {
+  display: block;
+}
+
+/* 站点内容和侧边栏，减少重复 */
+main .site-content {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+main .post-content {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+.post-content .post-image .post-info {
+  background: var(--sky);
+  padding: var(--spacing-md);
+  position: absolute;
+  bottom: 0;
+  left: 20vw;
+  border-radius: var(--border-radius);
+}
+.post-content .post-image > div {
+  overflow: hidden;
+}
+.post-content .post-image .img {
+  width: 100%;
+  transition: all 1s ease;
+}
+.post-content .post-image .img:hover {
+  transform: scale(1.3);
+}
+.post-content .post-title a {
+  font-family: var(--Anton);
+  font-size: 1.5rem;
+}
+.post-content .post-title .post-btn {
+  background: var(--sky);
+}
+.site-content .pagination {
+  justify-content: center;
+  color: var(--text-gray);
+  margin: var(--spacing-lg) 0;
+}
+.site-content .pagination a {
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--border-radius);
+  margin: 0 var(--spacing-sm);
+  font-family: var(--Lexend);
+}
+.site-content .pagination .pages {
+  background: var(--text-gray);
+  color: var(--white);
+}
+
+.sidebar .category-list .list-items {
+  background: var(--sky);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  border-radius: var(--border-radius);
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+.sidebar .category-list .list-items a {
+  color: black;
+}
+.sidebar .popular-post .post-content {
+  padding: var(--spacing-md) 0;
+}
+.sidebar .popular-post h2 {
+  padding-top: 8rem;
+}
+.sidebar .popular-post .post-info {
+  padding: var(--spacing-sm) var(--spacing-sm) !important;
+  bottom: 0 !important;
+  left: var(--spacing-md) !important;
+  border-radius: 0 !important;
+  background: white !important;
+}
+.sidebar .popular-post .post-title a {
+  font-size: 1rem;
+}
+.sidebar .newsletter {
+  padding-top: 10rem;
+}
+.sidebar .newsletter .form-element {
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+.sidebar .newsletter .input-element {
+  width: 80%;
+  height: 1.9rem;
+  padding: var(--spacing-sm);
+  font-family: var(--Lexend);
+  font-size: 1rem;
+  border-radius: 0.3em;
+}
+.sidebar .newsletter .form-btn {
+  border-radius: 0.5em;
+  padding: 0.8rem 32%;
+  margin: var(--spacing-md) 0;
+  background: var(--sky);
+}
+.sidebar .popular-tags {
+  padding: 5rem 0;
+}
+.sidebar .popular-tags .tags .tag {
+  background: var(--sky);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-sm) var(--spacing-sm);
+}
+
+/* 页脚优化，减少重复 */
+.footer {
+  height: 100%;
+  background: var(--bg-color);
+  position: relative;
+}
+.footer .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+.footer .container > div {
+  flex-grow: 1;
+}
+.footer .container h2 {
+  color: var(--white);
+}
+.footer .newsletter .form-element {
+  background: black;
+  display: inline-block;
+}
+.footer .newsletter .form-element input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--Josefin);
+  font-size: 1rem;
+  width: 74%;
+}
+.footer .newsletter .form-element span {
+  background: var(--sky);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+}
+.footer .instagram div > img {
+  width: 25%;
+  height: 50%;
+  margin: var(--spacing-sm) var(--spacing-sm);
+}
+.footer .follow div i {
+  color: var(--white);
+  padding: 0 var(--spacing-sm);
+}
+.footer .rights {
+  justify-content: center;
+  font-family: var(--Josefin);
+  padding: var(--spacing-md) 0;
+}
+.footer .rights h4 a {
+  color: var(--white);
+}
+
+.move-up {
+  position: fixed;
+  bottom: 3em;
+  right: 1em;
+  border: none;
+  cursor: pointer;
+}
+.move-up span i {
+  font-size: 2.5rem;
+  color: var(--blue-moveup);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.move-up:hover span i {
+  transform: scale(1.3);
+  color: var(--blue-deep);
+}
+
+/* 精简媒体查询，减少重复 */
+@media (max-width: 1130px) {
+  .post-content .post-info {
+    left: 2rem !important;
+    bottom: 1.2rem !important;
+  }
+  .sidebar .popular-post .post-info {
+    display: none !important;
+  }
+  .footer .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .nav .nav-menu,
+  .nav .nav-items {
+    flex-direction: column;
+  }
+  .nav .toggle-collapse {
+    display: initial;
+  }
+  main .site-content {
+    grid-template-columns: 100%;
+  }
+  .footer .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  main .blog {
+    height: 125vh;
+  }
+  .post-content .post-info {
+    display: none;
+  }
+  .footer .container > div {
+    padding: var(--spacing-md) var(--spacing-sm) !important;
+  }
+  .footer .rights {
+    padding: 0 var(--spacing-lg);
+    text-align: center;
+  }
+  .nav .toggle-collapse {
+    width: 80% !important;
+  }
+}
+
+/* Owl Carousel 样式优化，减少硬编码 */
+section .container .owl-nav {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+}
+.owl-nav [class*="owl-"] {
+  color: var(--text-gray);
+  background: transparent;
+  font-size: 3rem;
+  outline: none;
+}
+.owl-nav [class*="owl-"]:hover {
+  color: rgba(46, 46, 125, 0.855);
+}
